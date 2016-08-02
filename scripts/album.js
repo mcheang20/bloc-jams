@@ -86,15 +86,6 @@ var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></
  }
 
 
-var findParentByCLassName = function(element, parentClass) {
-    if (element) {
-        var currentParent = element.parentElement;
-         while (currentParent.className != parentClass && currentParent.className !== null) {
-            currentParent = currentParent.parentElement;
-        }
-        return currentParent;
-    }
-};
 
-var getSongItem = function
+
     
