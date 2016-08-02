@@ -146,10 +146,3 @@ var currentlyPlayingSong = null;
      }
  }
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> checkpoint-27-play/pause-pt2
-    
