@@ -38,7 +38,12 @@ var albumMarconi = {
       + '</tr>'
       ;
  
-     return template;
+      var $row = $(template);
+      $row.find('.song-item-number').click(clickHandler);
+     // #2
+      $row.hover(onHover, offHover);
+     // #3
+      return $row;
  };
 
 var setCurrentAlbum = function(album) {
