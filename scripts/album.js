@@ -139,24 +139,39 @@ var previousSong = function() {
     
 };
 
-var nextSong = function(){
-    //store prev song number
-    var previousSongNumber = currentlyPlayingSongNumber;
-    var previousSongIndex = trackIndex(currentAlbum, currentSongFromAlbum)
-    var nextSongIndex = previousSongIndex == currentAlbum.songs.length - 1 ? 0 : previousSongNumber + 1;
+var nextSong = function() {
     
-    //set current song playing number
-    setSong(previousSongNumber == currentAlbum.songs.length ? 1 : previousSongNumber + 1 )
+    var getLastSongNumber = function(index) {
+        return index == 0 ? currentAlbum.songs.length : index;
+    };
     
-    //update player bar
+    var currentSongIndex = trackIndex(currentAlbum, currentSongFromAlbum);
+    // Note that we're _incrementing_ the song here
+    currentSongIndex++;
+    
+    if (currentSongIndex >= currentAlbum.songs.length) {
+        currentSongIndex = 0;
+    }
+    
+    // Set a new current song
+    currentlyPlayingSongNumber = currentSongIndex + 1;
+    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+
+    // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.title);
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.title);
     $('.main-controls .play-pause').html(playerBarPauseButton);
     
-    //update prev song cell number with the number it should be
-    $('song-item-number[data-song-number="' + previousSongNumber +'"]').text(previousSongNumber);
-}
+    var lastSongNumber = getLastSongNumber(currentSongIndex);
+    var $nextSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
+    var $lastSongNumberCell = getSongNumberCell(lastSongNumber);
+    
+    $nextSongNumberCell.html(pauseButtonTemplate);
+    $lastSongNumberCell.html(lastSongNumber);
+    
+};
+
 var setSong = function(songNumber) {
     currentlyPlayingSongNumber = parseInt(songNumber);
     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
