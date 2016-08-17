@@ -265,3 +265,15 @@ var setVolume = function(volume) {
 var getSongNumberCell = function(number) {
   return $('.song-item-number[data-song-number="' + number + '"]');
 };
+
+var setCurrentTimeInPlayerBar = function(currentTime) {
+    $('.current-time').text(curentTime);
+}
+
+var setTotalTimeInPlayerBar = function(totalTime) {
+    $('.total-time').text(totalTime);
+}
+
+var filterTimeCode = function(timeInSeconds) {
+    
+}
