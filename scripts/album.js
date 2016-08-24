@@ -33,7 +33,7 @@
 		if (currentSoundFile.isPaused()) {
           $(this).html(pauseButtonTemplate);
           $('.main-controls .play-pause').html(playerBarPauseButton);
-             currentSoundFile.play();
+            currentSoundFile.play();
             updateSeekBarWhileSongPlays();
       } else {
            $(this).html(playButtonTemplate);
@@ -293,3 +293,32 @@ var filterTimeCode = function(timeInSeconds) {
     
     return timeCode;
 }
+
+var $playPause = $('.main-controls .play-pause');
+var togglePlayFromPlayerBar = function() {
+    //grab currently playing number cell if needed
+    var $currentCell = getSongNumberCell(currentlyPlayingSongNumber);
+    
+    // if no song is playing, play first song
+    if(currentSoundFile == null){
+        setSong(1);
+        $playPause.html(playerBarPauseButton);
+        $currentCell.html(pauseButtonTemplate);
+    }else {
+        if(currentSoundFile.isPaused()){
+            currentSoundFile.play();
+            $playPause.html(playerBarPauseButton);
+            $currentCell.html(pauseButtonTemplate);
+            updateSeekBarWhileSongPlays();
+        } else {
+            currentSoundFile.pause();
+            $playPause.html(playerBarPlayButton);
+            $currentCell.html(playButtonTemplate);
+        }
+    }
+    
+}; 
+
+$(document).ready(function() {
+    $playPause.click(togglePlayFromPlayerBar);
+})
