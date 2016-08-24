@@ -11,8 +11,7 @@
      
      var clickHandler = function() {
        var songNumber = parseInt($(this).attr('data-song-number'));
-
-	   if (currentlyPlayingSongNumber != null) {
+        if (currentlyPlayingSongNumber != null) {
 		// Revert to song number for currently playing song because user started playing new song.
         var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
 		currentlyPlayingCell.html(currentlyPlayingSongNumber);
