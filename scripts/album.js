@@ -272,6 +272,7 @@ var setVolume = function(volume) {
 var getSongNumberCell = function(number) {
   return $('.song-item-number[data-song-number="' + number + '"]');
 };
+<<<<<<< HEAD
 
 var setCurrentTimeInPlayerBar = function(currentTime) {
 <<<<<<< HEAD
@@ -303,3 +304,32 @@ var filterTimeCode = function(timeInSeconds) {
     
 >>>>>>> assignment-34-seek-bars
 }
+=======
+var $playPause = $('.main-controls .play-pause');
+var togglePlayFromPlayerBar = function() {
+    //grab currently playing number cell if needed
+    var $currentCell = getSongNumberCell(currentlyPlayingSongNumber);
+    
+    // if no song is playing, play first song
+    if(currentSoundFile == null){
+        setSong(1);
+        $playPause.html(playerBarPauseButton);
+        $currentCell.html(pauseButtonTemplate);
+    }else {
+        if(currentSoundFile.isPaused()){
+            currentSoundFile.play();
+            $playPause.html(playerBarPauseButton);
+            $currentCell.html(pauseButtonTemplate);
+        } else {
+            currentSoundFile.pause();
+            $playPause.html(playerBarPlayButton);
+            $currentCell.html(playButtonTemplate);
+        }
+    }
+    
+}; 
+
+$(document).ready(function() {
+    $playPause.click(togglePlayFromPlayerBar);
+})
+>>>>>>> assignment-33-library
