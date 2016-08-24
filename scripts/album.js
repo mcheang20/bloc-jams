@@ -11,8 +11,7 @@
      
      var clickHandler = function() {
        var songNumber = parseInt($(this).attr('data-song-number'));
-
-	   if (currentlyPlayingSongNumber != null) {
+        if (currentlyPlayingSongNumber != null) {
 		// Revert to song number for currently playing song because user started playing new song.
         var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
 		currentlyPlayingCell.html(currentlyPlayingSongNumber);
@@ -275,12 +274,17 @@ var getSongNumberCell = function(number) {
 };
 
 var setCurrentTimeInPlayerBar = function(currentTime) {
+<<<<<<< HEAD
     $('.current-time').text(filterTimeCode(currentTime));
     filterTimeCode(currentTime);
+=======
+    $('.current-time').text(curentTime);
+>>>>>>> assignment-34-seek-bars
 }
 
 var setTotalTimeInPlayerBar = function(totalTime) {
     $('.total-time').text(totalTime);
+<<<<<<< HEAD
     filterTimeCode(totalTime);
 }
 
@@ -292,4 +296,10 @@ var filterTimeCode = function(timeInSeconds) {
     var timeCode = minutes + ":" + seconds;
     
     return timeCode;
+=======
+}
+
+var filterTimeCode = function(timeInSeconds) {
+    
+>>>>>>> assignment-34-seek-bars
 }
