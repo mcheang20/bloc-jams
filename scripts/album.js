@@ -272,20 +272,15 @@ var setVolume = function(volume) {
 var getSongNumberCell = function(number) {
   return $('.song-item-number[data-song-number="' + number + '"]');
 };
-<<<<<<< HEAD
 
 var setCurrentTimeInPlayerBar = function(currentTime) {
-<<<<<<< HEAD
     $('.current-time').text(filterTimeCode(currentTime));
     filterTimeCode(currentTime);
-=======
     $('.current-time').text(curentTime);
->>>>>>> assignment-34-seek-bars
 }
 
 var setTotalTimeInPlayerBar = function(totalTime) {
     $('.total-time').text(totalTime);
-<<<<<<< HEAD
     filterTimeCode(totalTime);
 }
 
@@ -297,5 +292,4 @@ var filterTimeCode = function(timeInSeconds) {
     var timeCode = minutes + ":" + seconds;
     
     return timeCode;
-=======
 }
