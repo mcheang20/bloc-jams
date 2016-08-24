@@ -299,8 +299,3 @@ var filterTimeCode = function(timeInSeconds) {
     return timeCode;
 =======
 }
-
-var filterTimeCode = function(timeInSeconds) {
-    
->>>>>>> assignment-34-seek-bars
-}
