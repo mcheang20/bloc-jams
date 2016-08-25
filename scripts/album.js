@@ -109,6 +109,7 @@ var setCurrentAlbum = function(album) {
 
 var setupSeekBars = function() {
      var $seekBars = $('.player-bar .seek-bar');
+     var $volumeSeekBar = $('.volume .seek-bar');
  
      $seekBars.click(function(event) {
          var offsetX = event.pageX - $(this).offset().left;
@@ -118,6 +119,7 @@ var setupSeekBars = function() {
          updateSeekPercentage($(this), seekBarFillRatio);
      });
     
+
       $seekBars.find('.thumb').mousedown(function(event) {  
          var $seekBar = $(this).parent();
  
@@ -127,6 +129,13 @@ var setupSeekBars = function() {
              var seekBarFillRatio = offsetX / barWidth;
  
              updateSeekPercentage($seekBar, seekBarFillRatio);
+             if( $seekBar.hasClass('volume-bar') ){
+                 var currentVolume = seekBarFillRatio * 100;
+                 currentVolume = Math.max(0, currentVolume);
+                 currentVolume = Math.min(100, currentVolume);
+                 currentVolume = Math.floor(currentVolume);
+                 setVolume(currentVolume);
+             }
          });
  
          $(document).bind('mouseup.thumb', function() {
@@ -275,13 +284,10 @@ var getSongNumberCell = function(number) {
 
 var setCurrentTimeInPlayerBar = function(currentTime) {
     $('.current-time').text(filterTimeCode(currentTime));
-    filterTimeCode(currentTime);
-    $('.current-time').text(curentTime);
 }
 
 var setTotalTimeInPlayerBar = function(totalTime) {
-    $('.total-time').text(totalTime);
-    filterTimeCode(totalTime);
+    $('.total-time').text(filterTimeCode(totalTime));
 }
 
 var filterTimeCode = function(timeInSeconds) {
